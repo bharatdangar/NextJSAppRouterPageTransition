@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 
 const SVGCurve = () => {
   const [dimensions, setDimensions] = useState({
-    width: null as number,
-    height: null as number
+    width: 0,
+    height: 0
   })
   useEffect(() => {
     if (!window) return
