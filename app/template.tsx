@@ -13,15 +13,17 @@ const Template = ({ children }: { children: React.ReactNode }) => {
 
   const perspective = {
     initial: {
-      y: -100
+      scale: 0.8
     },
     enter: {
-      y: 0
+      scale: 1
     },
     exit: {
-      y: -100,
+      scale: 0.8,
+      opacity: 0.5,
       transition: {
         duration: 1,
+        delay: 0.4,
         ease: [0.76, 1, 0.24, 1]
       }
     }
@@ -38,6 +40,7 @@ const Template = ({ children }: { children: React.ReactNode }) => {
       top: '0',
       transition: {
         duration: 1,
+        delay: 0.2,
         ease: [0.76, 1, 0.24, 1]
       }
     }
@@ -51,18 +54,22 @@ const Template = ({ children }: { children: React.ReactNode }) => {
       top: '100vh'
     },
     exit: {
-      top: '100vh'
+      top: '0',
+      transition: {
+        duration: 1,
+        ease: [0.76, 1, 0.24, 1]
+      }
     }
   }
 
   return (
     <>
       <motion.div
-        className='slide-boject bg-orange-500'
+        className='slide-object fixed inset-0 z-10 h-dvh bg-orange-500'
         {...animation(slideIn)}
       />
       <motion.div
-        className='slide-boject bg-orange-500'
+        className='slide-object fixed inset-0 z-20 h-dvh bg-red-500'
         {...animation(slide)}
       />
       <motion.div {...animation(perspective)}>{children}</motion.div>
